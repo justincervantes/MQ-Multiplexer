@@ -1,0 +1,68 @@
+Server
+
+-Create a loop which listens for connection requests on its client_queue.
+-If the server detects a client request, ie type 1, it forks a process - the child runs
+a new method while the parent continues its listen loop after adding its PID to a vector 
+of all client PIDs*
+-At the end of the listen loop, iterate through the vector and push a message with
+the type as the pid to the server_queue and the message as the filename for the 
+amount of times of its index.
+
+
+
+Server Client_X
+
+-Immediately after the fork call, have an if return value is 0, then run a method
+that reads the server_queue and checks the next message on the queue. 
+-If you are next, consume the message and write a buffer of the filename to the 
+client_queue with the type as its own pid.
+
+
+
+Client 
+
+-On startup, send a message to the client_queue with a type of 1, and the message in
+the format of "pid filepath". 
+-In a loop, read the front of the queue and if the type is your pid, consume it and print it out.
+
+
+
+
+
+
+
+
+
+
+
+
+Version 2
+
+Server
+
+-Create a loop which listens for connection requests on its client_queue.
+-If the server detects a client request, ie type 1, it forks a process - the child runs
+a new method while the parent continues its listen loop after adding its PID to a vector 
+of all client PIDs*
+-At the end of the listen loop, iterate through the vector and push a message with
+the type as the pid to the server_queue and the message as the filename for the 
+amount of times of its index.
+
+
+Server Client_X
+
+-Immediately after the fork call, have an if return value is 0, then run a method
+that reads the server_queue and checks the next message on the queue. 
+-If you are next, consume the message and write a buffer of the filename to the 
+client_queue with the type as its own pid.
+
+
+
+Client 
+
+-On startup, send a message to the client_queue with a type of 1, and the message in
+the format of "pid filepath". 
+-In a loop, read the front of the queue and if the type is your pid, consume it and print it out.
+
+
+
